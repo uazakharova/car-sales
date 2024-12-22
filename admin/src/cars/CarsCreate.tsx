@@ -1,17 +1,38 @@
-import {Create, required, SimpleForm, TextInput, ImageInput, ImageField} from "react-admin";
+import {
+    Create,
+    BooleanInput,
+    NumberInput,
+    ArrayInput,
+    required,
+    SimpleForm,
+    SimpleFormIterator,
+    TextInput,
+    ImageInput,
+    ImageField,
+    ReferenceInput, SelectInput
+} from "react-admin";
 
 const CarsCreate = () => {
     return (
         <Create>
             <SimpleForm>
-                <TextInput source="carNumber" validate={[required()]}/>
-                <TextInput source="rating" validate={[required()]}/>
-                <TextInput source="brand" validate={[required()]}/>
-                <ImageInput source="base64ImageSrc" label="Фото">
-                    <ImageField source="src"/>
-                </ImageInput>
+                <BooleanInput source="showOnMain" />
+                <NumberInput source="rating" />
+                <TextInput source="manufactureCountry" />
+                <NumberInput source="yearOfProduction" optional />
+                <ReferenceInput source="brand" reference="brands">
+                    <SelectInput optionText="carName" />
+                </ReferenceInput>
+                <ReferenceInput source="model" reference="models">
+                    <SelectInput optionText="modelCar" />
+                </ReferenceInput>
+                <ReferenceInput source="status" reference="statuses">
+                    <SelectInput optionText="status" />
+                </ReferenceInput>
+                <ReferenceInput source="configuration" reference="configuration">
+                    <SelectInput optionText="configuration" />
+                </ReferenceInput>
             </SimpleForm>
-            {/*<Simple*/}
         </Create>
     );
 };

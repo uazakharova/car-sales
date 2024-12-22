@@ -5,7 +5,7 @@ export const dataProvider = withLifecycleCallbacks(simpleRestProvider(
         // import.meta.env.VITE_SIMPLE_REST_URL,
         "http://localhost:3000"
     ), [{
-        resource: 'cars',
+        resource: 'models',
         beforeCreate: async (params, dataProvider: DataProvider) => {
             console.log(params)
             // const newPictures = params.data.picture.filter(picture => picture.rawFile instanceof File)

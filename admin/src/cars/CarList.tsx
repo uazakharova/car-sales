@@ -1,12 +1,26 @@
-import {List, Datagrid, TextField, ImageField} from "react-admin";
+import {List, Datagrid, TextField, ImageField, ChipField, ReferenceField,ReferenceManyField, NumberField,BooleanField} from "react-admin";
 
 const CarList = () => {
-    const textFields =  ["id","rating","carNumber"]
     return (
         <List>
             <Datagrid>
-                {textFields.map(field => <TextField source={field}/>)}
-                <ImageField source="base64ImageSrc" />
+                <TextField source="id" />
+                <BooleanField source="showOnMain" label="Show on Main Page" />
+                <NumberField source="rating" />
+                <TextField source="manufactureCountry" />
+                <NumberField source="yearOfProduction" />
+                <ReferenceField source="model" reference="models">
+                    <TextField source="modelCar" />
+                </ReferenceField>
+                <ReferenceField source="configuration" reference="configuration">
+                    <TextField source="configuration" />
+                </ReferenceField>
+                <ReferenceField source="status" reference="statuses">
+                    <TextField source="status" />
+                </ReferenceField>
+                <ReferenceField source="brand" reference="brands">
+                    <TextField source="carName" />
+                </ReferenceField>
             </Datagrid>
         </List>
     );
