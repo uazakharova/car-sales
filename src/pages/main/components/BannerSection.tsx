@@ -61,9 +61,9 @@ const BannerSection = ({bannerCars}) => {
         <Grid container={true} alignItems="center" spacing={4} mb={6}>
             <Grid alignItems="space-between" size={{sm: 12, md: 6}}>
                 <Typography
-                    variant="h3"
                     gutterBottom={true}
                     pb={4}
+                    sx={{ typography: { sm: 'h3', xs: 'h4' } }}
                 >
                     Профессиональный подбор и продажа автомобилей на самых выгодных условиях
                 </Typography>
