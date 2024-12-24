@@ -1,0 +1,1 @@
+export const SCHEDULE = "Пн-вс 10:00 - 20:00"

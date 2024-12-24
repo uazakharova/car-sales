@@ -1,6 +1,10 @@
 *{
   box-sizing:border-box;
 }
+.react-multi-carousel-item{
+  padding: 4px;
+  padding-right: 15px;
+}
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
