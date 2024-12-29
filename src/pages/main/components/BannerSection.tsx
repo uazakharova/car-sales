@@ -1,10 +1,12 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {Box, Button, Container, Typography} from "@mui/material";
+import {Box, Button, Container, Stack, Typography} from "@mui/material";
 import Carousel from "react-multi-carousel";
 import {useEffect, useState} from "react";
 import {getAllCarsWithFullInfo} from "../../../api/cars/index";
 import Grid from '@mui/material/Grid2';
+import {ROUTES_PATH} from "../../../constants/routes";
+import {NavLink} from "react-router-dom";
 
 const BannerSection = ({bannerCars}) => {
 
@@ -61,9 +63,14 @@ const BannerSection = ({bannerCars}) => {
         <Grid container={true} alignItems="center" spacing={4} mb={6}>
             <Grid alignItems="space-between" size={{sm: 12, md: 6}}>
                 <Typography
-                    gutterBottom={true}
-                    pb={4}
-                    sx={{ typography: { sm: 'h3', xs: 'h4' } }}
+                    pb={2}
+                    sx={{ typography: { sm: 'h2', xs: 'h3' } }}
+                >
+                    Умные машины для умных людей
+                </Typography>
+                <Typography
+                    sx={{ typography: { sm: 'subtitle', xs: 'h5' }}}
+                    mb={5}
                 >
                     Профессиональный подбор и продажа автомобилей на самых выгодных условиях
                 </Typography>
@@ -72,13 +79,16 @@ const BannerSection = ({bannerCars}) => {
                     gap="16px"
                     marginTop="16px"
                 >
-                    <Button
-                        variant="contained"
-                        color="success"
-                        size="large"
-                    >
-                        Перейти в каталог
-                    </Button>
+                    <NavLink to={ROUTES_PATH.CATALOG}>
+                        <Button
+                            variant="contained"
+                            sx={{backgroundColor: "#0D1B2A",color:"#B4FEA8"}}
+                            color="success"
+                            size="large"
+                        >
+                            Перейти в каталог
+                        </Button>
+                    </NavLink>
                 </Box>
             </Grid>
             <Grid
@@ -90,47 +100,58 @@ const BannerSection = ({bannerCars}) => {
                 {/*<Box*/}
                 {/*>*/}
                 {bannerCars &&
-                    <Carousel showDots={true} responsive={responsive} itemClass="carousel-item-padding-100-px" >
+                    <Carousel containerClass="carousel-container" showDots={true} responsive={responsive} itemClass="carousel-item-padding-100-px" >
                         {
                             bannerCars?.filter(car => car.showOnMain).map(bannerCar => (
-                                <Box
+                                <Stack
                                     padding="16px"
+                                    pb={4}
+                                    justifyContent="space-between"
+                                    alignContent="space-between"
                                 >
-                                    <Box width="100%">
-                                        <img
-                                            src={bannerCar.model?.base64ImageSrc}
-                                            alt="Image not found"
-                                            style={{objectFit: "cover"}}
-                                            width="100%"
-                                            height="100%"
-                                        />
-                                    </Box>
-                                    <Typography
-                                        variant="body2"
-                                        color="textSecondary"
-                                    >
-                                        {bannerCar.configuration?.engineType?.engineType}
-                                    </Typography>
-                                    <Typography
-                                        variant="h6"
-                                    >
-                                        {`${bannerCar.brand?.carName} ${bannerCar.model?.modelCar}`}
-                                    </Typography>
-                                    <Typography
-                                        variant="body2"
-                                        color="textSecondary"
-                                    >
-                                        {`${bannerCar.configuration?.showPriceFrom ? "От" : ""} ${bannerCar.configuration?.priceCar} ₽`}
-                                    </Typography>
-                                    <Button
-                                        variant="outlined"
-                                        color="success"
-                                        fullWidth={true}
-                                        style={{marginTop: '16px'}}
-                                    >
-                                        Подробнее
-                                    </Button>
-                                </Box>
+
+                                    {/*<Stack>*/}
+                                        <Box width="100%" mb={2}>
+                                            <img
+                                                src={bannerCar.model?.base64ImageSrc}
+                                                alt="Image not found"
+                                                style={{objectFit: "cover"}}
+                                                width="100%"
+                                                height="300px"
+                                                // height="100%"
+                                            />
+                                        </Box>
+                                        <Typography
+                                            variant="body2"
+                                            color="textSecondary"
+                                        >
+                                            {bannerCar.configuration?.engineType?.engineType}
+                                        </Typography>
+                                        <Typography
+                                            variant="h6"
+                                            mb={2}
+                                        >
+                                            {`${bannerCar.brand?.carName} ${bannerCar.model?.modelCar}`}
+                                        </Typography>
+                                        <Typography
+                                            variant="body2"
+                                            color="textSecondary"
+                                        >
+                                            {`${bannerCar.configuration?.showPriceFrom ? "От" : ""} ${bannerCar.configuration?.priceCar} ₽`}
+                                        </Typography>
+                                    {/*</Stack>*/}
+                                    <NavLink to={`${ROUTES_PATH.CATALOG}/${bannerCar.id}`}>
+                                        <Button
+                                            variant="outlined"
+                                            color="success"
+                                            fullWidth={true}
+                                            sx={{backgroundColor: "#B3FDA7",color:"#0D1B2A",border:'none'}}
+                                            style={{marginTop: '16px'}}
+                                        >
+                                            Подробнее
+                                        </Button>
+                                    </NavLink>
+                                </Stack>
                             ))
                         }
                     </Carousel>

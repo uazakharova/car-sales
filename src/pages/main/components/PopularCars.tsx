@@ -1,5 +1,8 @@
-import {Box, Card, CardContent, CardHeader, CardMedia, Icon, Stack, Typography} from "@mui/material";
+import {Box, Button, Card, CardContent, CardHeader, CardMedia, Icon, Stack, Typography} from "@mui/material";
 import Carousel from "react-multi-carousel";
+import {NavLink} from "react-router-dom";
+import {ROUTES_PATH} from "../../../constants/routes";
+import React from "react";
 
 const PopularCars = ({cars}) => {
     if (cars) console.log(cars.filter(car => car.rating).sort((a, b) => b.rating - a.rating))
@@ -24,14 +27,14 @@ const PopularCars = ({cars}) => {
                 variant="h4"
                 mb={3}
             >
-                Популярные электромобили
+                Популярные автомобили
             </Typography>
             {
                 cars &&
                 <Carousel responsive={responsive} itemClass="carousel-item-padding-40-px">
                     {
                         cars.filter(car => car.rating).sort((a, b) => b.rating - a.rating).map(car => <Card
-                            sx={{height: '100%',boxShadow:2}}>
+                            sx={{height: '100%', boxShadow: 2}}>
                             <CardHeader
                                 title="Tesla Model 3"
                                 // avatar={
@@ -40,13 +43,15 @@ const PopularCars = ({cars}) => {
                                 //     />
                                 // }
                             />
-                            <CardMedia>
-                                <img style={{width: '100%'}} src={car.model?.base64ImageSrc} alt="Not found"/>
+                            <CardMedia sx={{height: 180}}>
+                                <img style={{width: '100%', height: '100%', objectFit: 'cover'}}
+                                     src={car.model?.base64ImageSrc} alt="Not found"/>
                             </CardMedia>
                             <CardContent>
                                 <Box
                                     display="flex"
                                     justifyContent="space-around"
+                                    mb={6}
                                 >
                                     <Typography
                                         variant="body2"
@@ -76,10 +81,21 @@ const PopularCars = ({cars}) => {
                                 <Typography
                                     variant="h6"
                                     align="center"
-                                    sx={{fontWeight: 'bold', marginTop: '30px'}}
+                                    mb={1}
+                                    sx={{fontWeight: 'bold'}}
                                 >
                                     {`${car.configuration?.showPriceFrom ? "От" : ""} ${car.configuration?.priceCar} ₽`}
                                 </Typography>
+                                <NavLink to={`${ROUTES_PATH.CATALOG}/${car.id}`}>
+                                    <Button
+                                        variant="outlined"
+                                        color="success"
+                                        fullWidth
+                                        sx={{mt: 1,backgroundColor: "#B3FDA7",color:"#0D1B2A",border:'none'}}
+                                    >
+                                        Подробнее
+                                    </Button>
+                                </NavLink>
                             </CardContent>
                         </Card>)
                     }

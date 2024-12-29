@@ -1,32 +1,35 @@
 import {Box, Button, Container, Divider, Icon, Stack, Typography} from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import {SCHEDULE} from "../../constants/public/schedule";
-import {Telegram, WhatsApp} from "@mui/icons-material";
-import {WHATSUP_LINK} from "../../constants/public/socials";
-import {PHONES_LIST} from "../../constants/public/contancs";
+import {Instagram, Telegram, WhatsApp} from "@mui/icons-material";
+import {INSTAGRAM_LINK, TELEGRAM_LINK, WHATSUP_LINK} from "../../constants/public/socials";
+import {MAIN_PHONE, PHONES_LIST} from "../../constants/public/contancs";
 import {NavLink} from "react-router-dom";
 import {ROUTES_PATH} from "../../constants/routes";
 import {Link} from "react-router-dom/dist";
+import Logo from "../../../public/LOGO.PNG";
 
 const Footer = () => {
     return (
         <Box
             width="100%"
-            sx={{backgroundColor: '#f9f9f9'}}
+            sx={{background: '#b2c7fc'}}
             mt={3}
         >
             <Container>
                 <Grid
                     container={true}
                     spacing={4}
+                    justifyContent="space-between"
                     alignItems="center"
                     pt={4}
                 >
                     <Grid
                     >
                         <Box
-                            sx={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}
+                            sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}
                         >
+                            <img style={{height: '80px', marginBottom: '5px'}} src={Logo} alt=""/>
                             {/*<Image*/}
                             {/*    src="https://placehold.co/150x50?text=logo"*/}
                             {/*    alt="Company logo"*/}
@@ -36,65 +39,67 @@ const Footer = () => {
 
                             <Stack
                                 direction="row"
-                                spacing={1}
+                                // width="100%"
+                                justifyContent="space-between"
+                                spacing={2}
                             >
                                 <a href={WHATSUP_LINK}>
                                     <WhatsApp/>
                                 </a>
-                                <a href={WHATSUP_LINK}>
+                                <a href={TELEGRAM_LINK}>
                                     <Telegram/>
+                                </a>
+                                <a href={INSTAGRAM_LINK}>
+                                    <Instagram/>
                                 </a>
                             </Stack>
                         </Box>
                     </Grid>
                     <Grid
                     >
-                        <Box
-                            sx={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}
+                        <Stack
+                            direction="row"
+                            spacing={2}
                         >
-                            <NavLink style={{color: "black", textDecoration: "none"}} to={ROUTES_PATH.MAIN}>
+                            <NavLink style={{color: "#0D1B2A", textDecoration: "none"}} to={ROUTES_PATH.MAIN}>
                                 <Typography
                                     variant="body1"
                                 >
                                     Главная
                                 </Typography>
                             </NavLink>
-                            <NavLink style={{color: "black", textDecoration: "none"}} to={ROUTES_PATH.CATALOG}>
+                            <NavLink style={{color: "#0D1B2A", textDecoration: "none"}} to={ROUTES_PATH.CATALOG}>
                                 <Typography
                                     variant="body1"
                                 >
                                     Каталог
                                 </Typography>
                             </NavLink>
-                            <NavLink style={{color: "black", textDecoration: "none"}} to={ROUTES_PATH.SERVICE}>
+                            <NavLink style={{color: "#0D1B2A", textDecoration: "none"}} to={ROUTES_PATH.SERVICE}>
                                 <Typography
                                     variant="body1"
                                 >
                                     Сервис
                                 </Typography>
                             </NavLink>
-                            <NavLink style={{color: "black", textDecoration: "none"}} to={ROUTES_PATH.CONTACTS}>
+                            <NavLink style={{color: "#0D1B2A", textDecoration: "none"}} to={ROUTES_PATH.CONTACTS}>
                                 <Typography
                                     variant="body1"
                                 >
                                     Контакты
                                 </Typography>
                             </NavLink>
-                        </Box>
+                        </Stack>
                     </Grid>
                     <Stack
                         alignItems="center"
                     >
-                        <Stack>
-                            {PHONES_LIST.map(phone => <Typography
-                                variant="body1"
-                                sx={{fontWeight: 'bold', fontSize: '20px'}}
-                            >
-                                {phone}
-                            </Typography>)}
-                        </Stack>
-
-
+                        <Typography
+                            variant="body2"
+                            sx={{fontWeight: 'bold'}}
+                        >
+                            {MAIN_PHONE}
+                        </Typography>
                         <Typography
                             variant="body2"
                         >
@@ -103,7 +108,7 @@ const Footer = () => {
                     </Stack>
                 </Grid>
                 <Divider
-                    sx={{my: 4}}
+                    sx={{my: 1}}
                 />
                 <Typography
                     variant="body2"
@@ -116,7 +121,7 @@ const Footer = () => {
                     variant="body2"
                     sx={{color: '#888', mt: 2}}
                 >
-                    © 2024. Все права защищены. Подробности о ценах и предложениях уточняйте у менеджеров
+                    © 2025. Все права защищены. Подробности о ценах и предложениях уточняйте у менеджеров
                 </Typography>
                 <Box
                     sx={{display: 'flex', justifyContent: 'center', mt: 2}}

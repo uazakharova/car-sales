@@ -4,64 +4,76 @@ import {ROUTES_PATH} from "../../constants/routes";
 import {MAIN_PHONE} from "../../constants/public/contancs";
 import {SCHEDULE} from "../../constants/public/schedule";
 import Grid from "@mui/material/Grid2";
-
+import DarkLogo from "../../../public/DARK_LOGO.PNG";
 function Header() {
+
     return (
         <Stack mb={3}
+               sx={{background:"#0D1B2A"}}
         >
             <Grid
                 display="flex"
                 sx={{justifyContent:{ sm: 'space-between', xs: 'center' }}}
                 justifyContent="space-between"
                 alignItems="center"
-                padding="16px"
+                padding="26px 16px"
                 container
             >
                 <Grid
-                    width="100px"
-                    height="50px"
-                />
+                    // width="100px"
+                    height="80px"
+                >
+                    <img style={{width:'100%',height:'100%'}} src={DarkLogo} alt=""/>
+                </Grid>
                 <Grid
                     display="flex"
-                    gap="16px"
+                    gap="30px"
                 >
                     <Link style={{color: "black", textDecoration: "none"}} to={ROUTES_PATH.MAIN}>
                         <Typography
-                            variant="body1"
+                            color="#B3FDA7"
+                            sx={{ typography: { sm: 'h6', xs: 'body1' }}}
                         >
-                            Главная
+                            ГЛАВНАЯ
                         </Typography>
                     </Link>
                     <Link style={{color: "black", textDecoration: "none"}} to={ROUTES_PATH.CATALOG}>
                         <Typography
-                            variant="body1"
+                            color="#B3FDA7"
+                            sx={{ typography: { sm: 'h6', xs: 'body1' }}}
                         >
-                            Каталог
+                            КАТАЛОГ
                         </Typography>
                     </Link>
                     <NavLink style={{color: "black", textDecoration: "none"}} to={ROUTES_PATH.SERVICE}>
                         <Typography
-                            variant="body1"
+                            color="#B3FDA7"
+                            sx={{ typography: { sm: 'h6', xs: 'body1' }}}
                         >
-                            Сервис
+                            СЕРВИС
                         </Typography>
                     </NavLink>
                     <NavLink style={{color: "black", textDecoration: "none"}} to={ROUTES_PATH.CONTACTS}>
                         <Typography
-                            variant="body1"
+                            color="#B3FDA7"
+                            sx={{ typography: { sm: 'h6', xs: 'body1' },mb:{sm:0,xs:3}}}
                         >
-                            Контакты
+                            КОНТАКТЫ
                         </Typography>
                     </NavLink>
                 </Grid>
                 <Grid>
                     <Typography
+                        color="#B3FDA7"
                         variant="body1"
+                        sx={{fontWeight: 'bold'}}
                     >
                         {MAIN_PHONE}
                     </Typography>
                     <Typography
+                        color="#B3FDA7"
                         variant="body2"
+                        align="right"
                     >
                         {SCHEDULE}
                     </Typography>
