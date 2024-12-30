@@ -64,7 +64,7 @@ const CatalogPage = () => {
         return queryParams
     }
     const generateSoringQueryParam = () => {
-        return sortingSelectValue === 'priceAsc' ? '["configuration.priceCar","ASC"]' : '["price","DESC"]'
+        return sortingSelectValue === 'priceAsc' ? '["configuration.priceCar","ASC"]' : '["configuration.priceCar","DESC"]'
     };
     const handleChangeEngineType = (
         event: React.MouseEvent<HTMLElement>,

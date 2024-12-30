@@ -15,7 +15,10 @@ const CarView = () => {
     console.log(chosenConfigId, chosenConfig)
 
     useEffect(() => {
-        getCarByIdWithFullInfo(id).then(res => setCarData(res.data))
+        getCarByIdWithFullInfo(id).then(res => {
+            setCarData(res.data)
+            setChosenConfigId(carData.configuration?.id)
+        })
     }, [])
     useEffect(() => {
         carData && setChosenConfigId(carData.configuration?.id)
