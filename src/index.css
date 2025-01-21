@@ -24,7 +24,12 @@
     color: #68FC50 !important;
     font-weight: bold !important;
 }
-
+a{
+  text-decoration:none;
+}
+.phone{
+  color:black;
+}
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

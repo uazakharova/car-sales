@@ -94,12 +94,14 @@ const Footer = () => {
                     <Stack
                         alignItems="center"
                     >
+                        <a class="phone" href={`tel:${MAIN_PHONE.replace(/ /g,'')}`}>
                         <Typography
                             variant="body2"
                             sx={{fontWeight: 'bold'}}
                         >
                             {MAIN_PHONE}
                         </Typography>
+                        </a>
                         <Typography
                             variant="body2"
                         >

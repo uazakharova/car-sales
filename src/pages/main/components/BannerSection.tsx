@@ -137,7 +137,7 @@ const BannerSection = ({bannerCars}) => {
                                             variant="body2"
                                             color="textSecondary"
                                         >
-                                            {`${bannerCar.configuration?.showPriceFrom ? "От" : ""} ${bannerCar.configuration?.priceCar} ₽`}
+                                            {`${bannerCar.configuration?.showPriceFrom ? "От" : ""} ${Intl.NumberFormat().format(bannerCar.configuration?.priceCar)} ₽`}
                                         </Typography>
                                     {/*</Stack>*/}
                                     <NavLink to={`${ROUTES_PATH.CATALOG}/${bannerCar.id}`}>

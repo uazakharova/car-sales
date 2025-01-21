@@ -20,10 +20,13 @@ function Header() {
                 container
             >
                 <Grid
-                    // width="100px"
+                    maxWidth="210px"
                     height="80px"
+                
                 >
+                    <Link style={{color: "black", textDecoration: "none"}} to={ROUTES_PATH.MAIN}>
                     <img style={{width:'100%',height:'100%'}} src={DarkLogo} alt=""/>
+                    </Link>
                 </Grid>
                 <Grid
                     display="flex"
@@ -63,13 +66,15 @@ function Header() {
                     </NavLink>
                 </Grid>
                 <Grid>
-                    <Typography
-                        color="#B3FDA7"
-                        variant="body1"
-                        sx={{fontWeight: 'bold'}}
-                    >
-                        {MAIN_PHONE}
-                    </Typography>
+                    <a href={`tel:${MAIN_PHONE.replace(/ /g,'')}`}>
+                        <Typography
+                            color="#B3FDA7"
+                            variant="body1"
+                            sx={{fontWeight: 'bold'}}
+                        >
+                            {MAIN_PHONE}
+                        </Typography>
+                    </a>
                     <Typography
                         color="#B3FDA7"
                         variant="body2"

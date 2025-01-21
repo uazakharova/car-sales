@@ -221,7 +221,8 @@ const CatalogPage = () => {
                                     {car.showOnMain && <Box sx={{
                                         position: "relative",
                                         padding: "25px 20px 4px 4px", background: "#0D1B2A",
-                                        borderRadius: "6px"
+                                        borderRadius: "6px",
+                                        width:85
                                     }}>
                                         <img style={{position: 'absolute', top: '10px', right: '10px', width: '10px'}}
                                              src={Bolt} alt=""/>
@@ -290,7 +291,7 @@ const CatalogPage = () => {
                                             <Typography
                                                 variant="h5"
                                             >
-                                                {`${car.configuration?.showPriceFrom ? "От" : ""} ${car.configuration?.priceCar} ₽`}
+                                                {`${car.configuration?.showPriceFrom ? "От" : ""} ${Intl.NumberFormat().format(car.configuration?.priceCar)} ₽`}
                                             </Typography>
                                             <Divider/>
                                             <Grid
@@ -307,21 +308,21 @@ const CatalogPage = () => {
                                                     <Typography
                                                         variant="body2"
                                                     >
-                                                        Мощность: 646 лс
+                                                     Мощность: {car.configuration?.powerCar} лс
                                                     </Typography>
                                                 </Grid>
                                                 <Grid>
                                                     <Typography
                                                         variant="body2"
                                                     >
-                                                        Запас хода: 705 км
+                                                        Запас хода: {car.configuration?.range} км
                                                     </Typography>
                                                 </Grid>
                                                 <Grid>
                                                     <Typography
                                                         variant="body2"
                                                     >
-                                                        Привод: AWD (Полный)
+                                                        Привод: {car.configuration?.driveType?.driveType}
                                                     </Typography>
                                                 </Grid>
                                             </Grid>

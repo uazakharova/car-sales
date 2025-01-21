@@ -5,7 +5,7 @@ import {ROUTES_PATH} from "../../../constants/routes";
 import React from "react";
 
 const PopularCars = ({cars}) => {
-    if (cars) console.log(cars.filter(car => car.rating).sort((a, b) => b.rating - a.rating))
+    if (cars) console.log(cars.filter(car => car.rating).sort((a, b) =>a.rating -  b.rating))
 
     const responsive = {
         desktop: {
@@ -33,10 +33,10 @@ const PopularCars = ({cars}) => {
                 cars &&
                 <Carousel responsive={responsive} itemClass="carousel-item-padding-40-px">
                     {
-                        cars.filter(car => car.rating).sort((a, b) => b.rating - a.rating).map(car => <Card
+                        cars.filter(car => car.rating).sort((a, b) => a.rating -  b.rating).map(car => <Card
                             sx={{height: '100%', boxShadow: 2}}>
                             <CardHeader
-                                title="Tesla Model 3"
+                                title={`${car.brand?.carName} ${car.model?.modelCar}`}
                                 // avatar={
                                 //     <Avatar
                                 //         src="https://placehold.co/50x50?text=Logo"
@@ -84,7 +84,7 @@ const PopularCars = ({cars}) => {
                                     mb={1}
                                     sx={{fontWeight: 'bold'}}
                                 >
-                                    {`${car.configuration?.showPriceFrom ? "От" : ""} ${car.configuration?.priceCar} ₽`}
+                                    {`${car.configuration?.showPriceFrom ? "От" : ""} ${Intl.NumberFormat().format(car.configuration?.priceCar)} ₽`}
                                 </Typography>
                                 <NavLink to={`${ROUTES_PATH.CATALOG}/${car.id}`}>
                                     <Button

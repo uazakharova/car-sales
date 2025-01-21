@@ -147,7 +147,7 @@ const CarView = () => {
                             </Typography>
                             <Stack direction="row" spacing={2}>
                                 {
-                                    carData.configuration?.exteriorColors?.map(color =>
+                                    carData.configuration?.interiorColors?.map(color =>
                                         <Box
                                             sx={{
                                                 width: 24,
@@ -159,12 +159,21 @@ const CarView = () => {
                                     )
                                 }
                             </Stack>
+
                             {/*<Typography*/}
                             {/*    variant="h6"*/}
                             {/*>*/}
                             {/*    зеленый*/}
                             {/*</Typography>*/}
                             <Divider/>
+                            <Typography
+                                    variant="h6"
+                                    align="center"
+                                    mb={1}
+                                    sx={{fontWeight: 'bold'}}
+                                >
+                                    {chosenConfig && `${chosenConfig.showPriceFrom ? "От" : ""} ${Intl.NumberFormat().format(chosenConfig.priceCar)} ₽`}
+                                </Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -205,17 +214,6 @@ const CarView = () => {
                         </Typography>
                         <Typography variant="h4">
                             {chosenConfig.driveType?.driveType}
-                        </Typography>
-                    </Stack>
-                    <Stack
-                        alignItems="center"
-                    >
-                        <AddBox/>
-                        <Typography variant="h6">
-                            Коробка передач
-                        </Typography>
-                        <Typography variant="h4">
-                            {chosenConfig.gearBox}
                         </Typography>
                     </Stack>
                     <Stack

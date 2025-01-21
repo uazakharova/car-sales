@@ -14,26 +14,26 @@ const ContactsPage = () => {
                 </Typography>
                 <Stack spacing={3}>
                     <Stack spacing={1}>
-                        <Typography variant="h6">
-                            Время работы
+                        <Typography sx={{fontWeight: 'bold'}} variant="h6">
+                            Время работы: 
                         </Typography>
                         <Typography variant="h6">
                             {SCHEDULE}
                         </Typography>
                     </Stack>
                     <Stack spacing={1}>
-                        <Typography variant="h6">
-                            Телефоны для связи
+                        <Typography sx={{fontWeight: 'bold'}} variant="h6">
+                            Телефоны для связи:
                         </Typography>
                         <Stack>
-                            {PHONES_LIST.map(phone => <Typography variant="h6">{phone}</Typography>)}
+                            {PHONES_LIST.map(phone =><a class="phone" href={`tel:${phone.replace(/ /g,'')}`}><Typography variant="h6">{phone}</Typography></a>)}
                         </Stack>
 
 
                     </Stack>
                     <Stack spacing={1}>
-                        <Typography variant="h6">
-                            Способы связи
+                        <Typography sx={{fontWeight: 'bold'}} variant="h6">
+                            Способы связи:
                         </Typography>
                         <Stack
                             direction="row"
